@@ -46,28 +46,42 @@ class BeritaController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        //validate form
+        // Validasi form
         $request->validate([
             'foto'         => 'required|image|mimes:jpeg,jpg,png|max:2048',
             'judul'        => 'required|min:5',
             'isi'          => 'required|min:10',
             'tanggal'      => 'required|date',
         ]);
-
-        //upload image
-        $image = $request->file('foto');
-        $image->storeAs('public/beritas', $foto->hashName());
-
-        //create product
-        Product::create([
+    
+        // Unggah gambar
+        $foto = $request->file('foto');
+        $foto->storeAs('public/beritas', $foto->hashName());
+    
+        // Buat berita dengan menghapus tag HTML dari isi
+        Berita::create([
             'foto'         => $foto->hashName(),
             'judul'        => $request->judul,
-            'isi'          => $request->isi,
+            'isi'          => strip_tags($request->isi), // Menghapus tag HTML
             'tanggal'      => $request->tanggal,
         ]);
-
-        //redirect to index
+    
+        // Alihkan ke index
         return redirect()->route('beritas.index')->with(['success' => 'Data Berhasil Disimpan!']);
+    }
+     /**
+     * show
+     *
+     * @param  mixed $id
+     * @return View
+     */
+    public function show(string $id): View
+    {
+        //get product by ID
+        $berita = Berita::findOrFail($id);
+
+        //render view with product
+        return view('beritas.show', compact('berita'));
     }
 }
 
