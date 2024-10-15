@@ -147,6 +147,27 @@ class BeritaController extends Controller
         // Redirect to index
         return redirect()->route('beritas.index')->with(['success' => 'Data Berhasil Diubah!']);
     }
+     /**
+     * destroy
+     *
+     * @param  mixed $id
+     * @return RedirectResponse
+     */
+    public function destroy($id): RedirectResponse
+    {
+        //get berita by ID
+        $berita = Berita::findOrFail($id);
 
+        //delete image
+        Storage::delete('public/beritas/'. $berita->image);
+
+        //delete berita
+        $berita->delete();
+
+        //redirect to index
+        return redirect()->route('beritas.index')->with(['success' => 'Data Berhasil Dihapus!']);
+    }
 }
+
+
 

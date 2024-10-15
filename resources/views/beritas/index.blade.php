@@ -156,49 +156,49 @@
                         </div>
                         <div class="card border-0 shadow-sm rounded">
                         <div class="card border-0 shadow-sm rounded">
-    <div class="card-body">
-        <a href="{{ route('beritas.create') }}" class="btn btn-md btn-success mb-3">Tambah Berita</a>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th scope="col">FOTO</th>
-                    <th scope="col">JUDUL</th>
-                    <th scope="col">DISKRIPSI</th>
-                    <th scope="col">TANGGAL</th>
-                    <th scope="col" style="width: 20%">ACTIONS</th>
-                </tr>
-            </thead>
-            <tbody>
-                @forelse ($beritas as $product)
-                    <tr>
-                        <td class="text-center">
-                            <img src="{{ asset('/storage/beritas/'.$product->foto) }}" class="rounded" style="width: 150px">
-                        </td>
-                        <td>{{ $product->judul }}</td>
-                        <td>{{ $product->isi }}</td>
-                        <td>{{ \Carbon\Carbon::parse($product->tanggal)->format('d-m-Y') }}</td>
-                        <td class="text-center">
-                            <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('beritas.destroy', $product->id) }}" method="POST">
-                                <a href="{{ route('beritas.show', $product->id) }}" class="btn btn-sm btn-dark">SHOW</a>
-                                <a href="{{ route('beritas.edit', $product->id) }}" class="btn btn-sm btn-primary">EDIT</a>
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
-                            </form>
-                        </td>
-                    </tr>
-                @empty
-                    <tr>
-                        <td colspan="5" class="text-center alert alert-danger">
-                            Data beritas belum tersedia.
-                        </td>
-                    </tr>
-                @endforelse
-            </tbody>
-        </table>
-        {{ $beritas->links() }}
-    </div>
-</div>
+                        <div class="card-body">
+                            <a href="{{ route('beritas.create') }}" class="btn btn-md btn-success mb-3">Tambah Berita</a>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">FOTO</th>
+                                        <th scope="col">JUDUL</th>
+                                        <th scope="col">DISKRIPSI</th>
+                                        <th scope="col">TANGGAL</th>
+                                        <th scope="col" style="width: 20%">ACTIONS</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse ($beritas as $product)
+                                        <tr>
+                                            <td class="text-center">
+                                                <img src="{{ asset('/storage/beritas/'.$product->foto) }}" class="rounded" style="width: 150px">
+                                            </td>
+                                            <td>{{ $product->judul }}</td>
+                                            <td>{{ $product->isi }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($product->tanggal)->format('d-m-Y') }}</td>
+                                            <td class="text-center">
+                                                <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('beritas.destroy', $product->id) }}" method="POST">
+                                                    <a href="{{ route('beritas.show', $product->id) }}" class="btn btn-sm btn-dark">SHOW</a>
+                                                    <a href="{{ route('beritas.edit', $product->id) }}" class="btn btn-sm btn-primary">EDIT</a>
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="5" class="text-center alert alert-danger">
+                                                Data beritas belum tersedia.
+                                            </td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                            {{ $beritas->links() }}
+                        </div>
+                    </div>
 
                     </div>
                 </main>
