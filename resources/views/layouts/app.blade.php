@@ -23,5 +23,10 @@
 
     <!-- Optional: Tambahkan JS custom Anda -->
     <script src="{{ asset('js/custom.js') }}"></script>
+    
+    <li class="nav-item">
+    <a class="nav-link" href="{{ route('ppdb.index') }}">PPDB</a>
+</li>
+
 </body>
 </html>
