@@ -26,6 +26,12 @@
     
     <li class="nav-item">
     <a class="nav-link" href="{{ route('ppdb.index') }}">PPDB</a>
+    <!-- Tampilkan link ke Beranda jika sedang di halaman PPDB -->
+    
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('beranda') }}">Beranda</a>
+        </li>
+  
 </li>
 
 </body>

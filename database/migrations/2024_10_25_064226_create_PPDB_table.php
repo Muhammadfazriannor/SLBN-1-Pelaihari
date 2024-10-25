@@ -10,9 +10,13 @@ class CreatePpdbTable extends Migration
     {
         Schema::create('ppdb', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
+            $table->string('nama_lengkap');
+            $table->string('tanggal_lahir');
+            $table->string('jenis_kelamin');
+            $table->string('alamat');
             $table->string('email');
             $table->string('no_hp');
+            $table->string('foto');
             $table->timestamps();
         });
     }

@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\PPDBController;
+use App\Http\Controllers\berandaController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -18,3 +19,4 @@ Route::resource('/ppdb', \App\Http\Controllers\PPDBController::class);
 
 Route::get('/ppdb', [PPDBController::class, 'index'])->name('ppdb.index');  // Menampilkan form PPDB
 Route::post('/ppdb', [PPDBController::class, 'store'])->name('ppdb.store'); // Menyimpan data PPDB
+Route::get('/', [berandaController::class, 'index'])->name('beranda');

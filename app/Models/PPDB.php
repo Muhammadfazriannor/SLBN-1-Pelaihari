@@ -14,9 +14,13 @@ class PPDB extends Model
 
     // Tentukan kolom yang dapat diisi
     protected $fillable = [
-        'nama',
+        'nama_lengkap',
+        'tanggal_lahir',
+        'jenis_kelamin',
+        'alamat',
         'email',
         'no_hp',
+        'foto',
     ];
 }
 
