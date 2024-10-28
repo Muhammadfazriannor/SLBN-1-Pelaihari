@@ -21,14 +21,16 @@ class BeritaController extends Controller
      *
      * @return void
      */
-    public function index() : View
+    public function index(): View
     {
-        //get all beritas
+        // Dapatkan semua berita dan hitung jumlahnya
         $beritas = Berita::latest()->paginate(10);
-
-        //render view with beritas
-        return view('beritas.index', compact('beritas'));
+        $jumlahBerita = Berita::count(); // Hitung jumlah berita
+    
+        // Render view dengan berita dan jumlah
+        return view('beritas.index', compact('beritas', 'jumlahBerita'));
     }
+    
      /**
      * create
      *
