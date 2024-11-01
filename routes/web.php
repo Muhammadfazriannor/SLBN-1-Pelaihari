@@ -16,9 +16,9 @@ Route::get('/PPDB', function () {
 Route::get('/', function () {
     return view('beranda');
 });
-
-// Perbaikan Route Registrasi
+//perbaikan route
 Route::get('/registrasi', [AuthController::class, 'tampilRegistrasi'])->name('registrasi.tampil');
+Route::post('/registrasi', [AuthController::class, 'tampilRegistrasi']);
 
 Route::resource('/beritas', \App\Http\Controllers\BeritaController::class);
 Route::resource('/ppdb', \App\Http\Controllers\PPDBController::class);
